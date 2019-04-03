@@ -32,7 +32,6 @@ def add_student(request):
         for chunk in t_image.chunks():  # 分块写入文件 可以将大文件按块写入到服务器中
             pic.write(chunk)
             # return HttpResponse("upload over!")
-        pic.close()
 
     student=student_info()
     student.t_name=t_name
@@ -75,7 +74,6 @@ def update_student(request):
     with open(fname, 'wb') as pic:
         for chunk in t_image.chunks():
             pic.write(chunk)
-        pic.close()
     t_image = os.path.join("/static/media/", t_image.name) #更改后的图片地址
 
     student_info.objects.filter(id=id).update(t_name=t_name,t_age=t_age,t_image=t_image)
