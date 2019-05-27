@@ -50,6 +50,7 @@ def search_student(request):
         if name_id:
             if type(name_id) ==str:
                 student = student_info.objects.filter(t_name=name_id) or student_info.objects.filter(id=name_id)
+                print(student.query) #打印查询sql语句
                 content = {'data': student}
                 return render(request, 'student/all.html', content)
         else:
